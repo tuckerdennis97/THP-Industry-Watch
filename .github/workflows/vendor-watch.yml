@@ -1,0 +1,64 @@
+# Tarheel Vendor & Industry Watch - runs the scan on GitHub's computers and
+# publishes the dashboard to GitHub Pages.
+name: Vendor Watch
+
+on:
+  schedule:
+    # Times are UTC. 11:17 UTC = 7:17 AM Eastern in summer (6:17 AM in winter),
+    # Monday through Friday. Odd minutes avoid GitHub's busiest top-of-hour slot.
+    - cron: "17 11 * * 1-5"
+  workflow_dispatch:        # adds a "Run workflow" button for running it on demand
+
+permissions:
+  contents: write           # save watch_data.json back to the repository
+  pages: write              # publish the dashboard
+  id-token: write           # required by the Pages publishing step
+
+concurrency:
+  group: vendor-watch       # never let two runs overlap
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Get the project files
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run the scan
+        env:
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+        run: python vendor_watch.py
+
+      - name: Save findings back to the repository
+        run: |
+          git config user.name "vendor-watch-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add watch_data.json config.json
+          if git diff --cached --quiet; then
+            echo "No data changes to save."
+          else
+            git commit -m "Vendor Watch update $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Prepare the dashboard for publishing
+        uses: actions/configure-pages@v5
+
+      - name: Package the dashboard
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Publish the dashboard
+        id: deployment
+        uses: actions/deploy-pages@v4
