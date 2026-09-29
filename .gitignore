@@ -1,0 +1,5 @@
+# Local-run files that should not be uploaded
+vendor_watch.log
+*.tmp
+site/
+__pycache__/

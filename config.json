@@ -1,0 +1,221 @@
+{
+  "watchlist": [
+    {
+      "name": "Sigma Stretch Film",
+      "category": "packaging"
+    },
+    {
+      "name": "Intertape Polymer Group",
+      "category": "packaging"
+    },
+    {
+      "name": "Marcal",
+      "category": "janitorial"
+    },
+    {
+      "name": "Inteplast Group",
+      "category": "packaging"
+    },
+    {
+      "name": "Avery Dennison",
+      "category": "packaging"
+    },
+    {
+      "name": "Berry Global",
+      "category": "packaging"
+    },
+    {
+      "name": "Cousins Packaging",
+      "category": "packaging"
+    },
+    {
+      "name": "Crown Matting Technologies",
+      "category": "janitorial"
+    },
+    {
+      "name": "DuBose Strapping",
+      "category": "packaging"
+    },
+    {
+      "name": "Encore Label",
+      "category": "packaging"
+    },
+    {
+      "name": "EnvirOx",
+      "category": "janitorial"
+    },
+    {
+      "name": "Fromm Packaging",
+      "category": "packaging"
+    },
+    {
+      "name": "GOJO Industries",
+      "category": "janitorial"
+    },
+    {
+      "name": "Gordon Paper Company",
+      "category": "packaging"
+    },
+    {
+      "name": "Georgia-Pacific",
+      "category": "packaging"
+    },
+    {
+      "name": "Henry Molded Products",
+      "category": "packaging"
+    },
+    {
+      "name": "Highlight Industries",
+      "category": "packaging"
+    },
+    {
+      "name": "Hospeco Brands",
+      "category": "janitorial"
+    },
+    {
+      "name": "Karcher",
+      "category": "janitorial"
+    },
+    {
+      "name": "Great Northern Laminations",
+      "category": "packaging"
+    },
+    {
+      "name": "MCR Safety",
+      "category": "safety"
+    },
+    {
+      "name": "National Chemical Laboratories",
+      "category": "janitorial"
+    },
+    {
+      "name": "PAC Strapping",
+      "category": "packaging"
+    },
+    {
+      "name": "Pregis",
+      "category": "packaging"
+    },
+    {
+      "name": "Radians",
+      "category": "safety"
+    },
+    {
+      "name": "SC Johnson Professional",
+      "category": "janitorial"
+    },
+    {
+      "name": "Sealed Air",
+      "category": "packaging"
+    },
+    {
+      "name": "Solaris Paper",
+      "category": "janitorial"
+    },
+    {
+      "name": "SpillTech",
+      "category": "safety"
+    },
+    {
+      "name": "Storopack",
+      "category": "packaging"
+    },
+    {
+      "name": "Christeyns",
+      "category": "janitorial"
+    },
+    {
+      "name": "Vanguard Safety",
+      "category": "safety"
+    },
+    {
+      "name": "ABCO Cleaning Products",
+      "category": "janitorial"
+    },
+    {
+      "name": "Automated Solutions LLC",
+      "category": "packaging"
+    }
+  ],
+  "competitors": [
+    "Imperial Dade",
+    "Veritiv",
+    "Bunzl Distribution",
+    "SouthEastern Paper Group"
+  ],
+  "industry_queries": [
+    "packaging manufacturer merger OR acquisition OR \"plant closure\"",
+    "janitorial supplies company acquisition OR bankruptcy OR closure",
+    "safety products PPE manufacturer acquisition OR \"new plant\" OR closure",
+    "corrugated OR \"stretch film\" plant closing OR opening OR expansion"
+  ],
+  "commodity_series": [
+    {
+      "id": "WPU0662",
+      "label": "Plastic Resins (PPI)",
+      "unit": "index"
+    },
+    {
+      "id": "WPU0912",
+      "label": "Paper (PPI)",
+      "unit": "index"
+    },
+    {
+      "id": "WPU0913",
+      "label": "Paperboard (PPI)",
+      "unit": "index"
+    },
+    {
+      "id": "APU000074717",
+      "label": "Diesel, US average",
+      "unit": "$/gal"
+    }
+  ],
+  "regulatory_queries": [
+    {
+      "term": "\"personal protective equipment\"",
+      "agencies": [
+        "occupational-safety-and-health-administration"
+      ]
+    },
+    {
+      "term": "disinfectant",
+      "agencies": [
+        "environmental-protection-agency"
+      ]
+    },
+    {
+      "term": "packaging",
+      "agencies": [
+        "environmental-protection-agency",
+        "food-and-drug-administration"
+      ]
+    }
+  ],
+  "regulatory_title_terms": [
+    "packag",
+    "protective equipment",
+    "ppe",
+    "disinfect",
+    "sanitiz",
+    "antimicrobial",
+    "pesticide",
+    "respirator",
+    "glove",
+    "hazardous materials",
+    "recycl",
+    "plastic",
+    "container",
+    "hazard communication"
+  ],
+  "first_run_lookback_days": 90,
+  "overlap_days": 7,
+  "max_items": 250,
+  "request_delay_seconds": 1.5,
+  "bls_api_key": "",
+  "blocked_sources": [
+    "AD HOC NEWS"
+  ],
+  "stale_after_days": 3,
+  "output_file": "site/index.html"
+}
