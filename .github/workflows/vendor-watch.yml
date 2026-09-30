@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Get the project files
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # full history, so the save step can merge in newer changes
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -46,10 +48,23 @@ jobs:
           git add watch_data.json config.json
           if git diff --cached --quiet; then
             echo "No data changes to save."
-          else
-            git commit -m "Vendor Watch update $(date -u +%Y-%m-%d)"
-            git push
+            exit 0
           fi
+          git commit -m "Vendor Watch update $(date -u +%Y-%m-%d)"
+          # If files were changed on GitHub while the scan was running, the
+          # repository is now newer than this run's copy. Pull those changes in
+          # first, then save. Retry a few times in case of a brief hiccup.
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "Findings saved."
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "Save attempt $attempt did not go through; retrying..."
+            sleep 10
+          done
+          echo "Could not save findings after 3 attempts."
+          exit 1
 
       - name: Prepare the dashboard for publishing
         uses: actions/configure-pages@v5
